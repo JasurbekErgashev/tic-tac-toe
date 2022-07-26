@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -185,6 +186,17 @@ class _HomePageState extends State<HomePage> {
         }
         if (whoWin()) {
           _gameEnd = true;
+        }
+        if (_whoWinTheGame == 1 || _whoWinTheGame == 2) {
+          final player = AudioPlayer();
+          player.play(
+            AssetSource('sounds/cheers.wav'),
+          );
+        } else if (_whoWinTheGame == 3) {
+          final player = AudioPlayer();
+          player.play(
+            AssetSource('sounds/sad.wav'),
+          );
         }
       });
     }
